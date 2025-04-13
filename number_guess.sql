@@ -142,14 +142,14 @@ ALTER TABLE ONLY public.users ALTER COLUMN user_id SET DEFAULT nextval('public.u
 -- Name: games_game_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
 --
 
-SELECT pg_catalog.setval('public.games_game_id_seq', 1, false);
+SELECT pg_catalog.setval('public.games_game_id_seq', 25, true);
 
 
 --
 -- Name: users_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
 --
 
-SELECT pg_catalog.setval('public.users_user_id_seq', 1, false);
+SELECT pg_catalog.setval('public.users_user_id_seq', 13, true);
 
 
 --
