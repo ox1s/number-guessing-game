@@ -43,7 +43,7 @@ if echo "$GUESS" | grep -qE '^[0-9]+$'
   if [[ $GUESS -eq $RANDOM_NUMBER ]]
   then
     break
-  elif [[ $GUESS -gt $RANDOM_NUMBER ]]
+  elif [[ $GUESS -lt $RANDOM_NUMBER ]]
     then
     echo "It's higher than that, guess again:"
   else 
