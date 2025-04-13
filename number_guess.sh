@@ -9,9 +9,12 @@ while true
 do
   echo -e "Enter your username:"
   read USERNAME
-  USERNAME=$(echo "$USERNAME" | xargs) 
-  [[ -n "$USERNAME" ]] && break         
+  if [[ "$USERNAME" =~ ^[a-zA-Z0-9]{3,22}$ ]]
+  then
+  break
+  else         
   echo "Username cannot be empty!"
+  fi
 done
 # trim input
 USERNAME=$(echo $USERNAME | sed 's/ //g')
