@@ -24,6 +24,7 @@ if [[ -z $USER_ID ]]
   # get new user_id
   USER_ID=$($PSQL "SELECT user_id FROM users WHERE name='$USERNAME'")
 else
+  USERNAME=$($PSQL "SELECT name FROM users WHERE name='$USERNAME'")
   GAMES_PLAYED=$($PSQL "SELECT COUNT(*) FROM games WHERE user_id=$USER_ID")
   BEST_GAME=$($PSQL "SELECT MIN(number_of_guesses) FROM games WHERE user_id=$USER_ID")
   echo "Welcome back, $USERNAME! You have played $GAMES_PLAYED games, and your best game took $BEST_GAME guesses."
