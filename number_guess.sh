@@ -32,13 +32,18 @@ echo -e "\nGuess the secret number between 1 and 1000:"
 while [[ $( echo $GUESS | sed 's/ //g') -ne $RANDOM_NUMBER ]]
 do
   read GUESS
-  TRIES=$((TRIES + 1))
-  if [[ $GUESS -gt $RANDOM_NUMBER ]]
+  if echo $GUESS | grep -qE '^[0-9]+$' 
     then
-    echo -e "\nIt's higher than that, guess again:"
-  elif [[ $GUESS -lt $RANDOM_NUMBER ]]
-    then
-    echo -e "\nIt's lower than that, guess again:"
+    TRIES=$((TRIES + 1))
+    if [[ $GUESS -gt $RANDOM_NUMBER ]]
+      then
+      echo -e "\nIt's higher than that, guess again:"
+    elif [[ $GUESS -lt $RANDOM_NUMBER ]]
+      then
+      echo -e "\nIt's lower than that, guess again:"
+    fi
+  else
+  echo -e "\nThat is not an integer, guess again:"
   fi
 done
 
