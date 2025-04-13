@@ -131,28 +131,27 @@ ALTER TABLE ONLY public.users ALTER COLUMN user_id SET DEFAULT nextval('public.u
 -- Data for Name: games; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-INSERT INTO public.games VALUES (1, 1, 401, '2025-04-13 20:16:38.110944');
-INSERT INTO public.games VALUES (2, 1, 403, '2025-04-13 20:16:39.300526');
-INSERT INTO public.games VALUES (3, 2, 353, '2025-04-13 20:16:40.332172');
-INSERT INTO public.games VALUES (4, 2, 71, '2025-04-13 20:16:40.630662');
-INSERT INTO public.games VALUES (5, 1, 534, '2025-04-13 20:16:42.190121');
-INSERT INTO public.games VALUES (6, 1, 906, '2025-04-13 20:16:44.679434');
-INSERT INTO public.games VALUES (7, 1, 23, '2025-04-13 20:16:44.846707');
+INSERT INTO public.games VALUES (1, 1, 868, '2025-04-13 20:34:42.725847');
+INSERT INTO public.games VALUES (2, 1, 50, '2025-04-13 20:34:43.088793');
+INSERT INTO public.games VALUES (3, 1, 431, '2025-04-13 20:34:44.960537');
+INSERT INTO public.games VALUES (4, 2, 557, '2025-04-13 20:34:47.170432');
+INSERT INTO public.games VALUES (5, 1, 637, '2025-04-13 20:34:49.486275');
+INSERT INTO public.games VALUES (6, 1, 841, '2025-04-13 20:34:52.025139');
 
 
 --
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-INSERT INTO public.users VALUES (1, 'user_1744575396874');
-INSERT INTO public.users VALUES (2, 'user_1744575396873');
+INSERT INTO public.users VALUES (1, '100');
+INSERT INTO public.users VALUES (2, '1000');
 
 
 --
 -- Name: games_game_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
 --
 
-SELECT pg_catalog.setval('public.games_game_id_seq', 7, true);
+SELECT pg_catalog.setval('public.games_game_id_seq', 6, true);
 
 
 --
@@ -168,6 +167,14 @@ SELECT pg_catalog.setval('public.users_user_id_seq', 2, true);
 
 ALTER TABLE ONLY public.games
     ADD CONSTRAINT games_pkey PRIMARY KEY (game_id);
+
+
+--
+-- Name: users unique_name; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT unique_name UNIQUE (name);
 
 
 --
