@@ -12,11 +12,13 @@ done
 #trim input
 USERNAME=$(echo $USERNAME | sed 's/ //g')
 #get user_id
-USER_ID=$($PSQL "SELECT user_id FROM users WHERE name=$USERNAME")
+USER_ID=$($PSQL "SELECT user_id FROM users WHERE name='$USERNAME'")
 #if don't exist
-if [[ -z $USER_ID]]
+if [[ -z $USER_ID ]]
   then
   echo "Welcome, $USERNAME! It looks like this is your first time here."
+  #add user
+  INSERT=$($PSQL "INSERT INTO users(name) VALUES('$USERNAME')")
 else
   GAMES_PLAYED=$($PSQL "SELECT COUNT(*) FROM games WHERE user_id=$USER_ID")
   BEST_GAME=$($PSQL "SELECT MIN(number_of_guesses) FROM games WHERE user_id=$USER_ID")
