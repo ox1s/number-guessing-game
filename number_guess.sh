@@ -5,9 +5,13 @@ PSQL="psql --username=freecodecamp --dbname=number_guess -t --no-align -c"
 echo -e "Enter your username:"
 read USERNAME
 
-while [[ -z $USERNAME ]] 
-  do
+while true
+do
+  echo -e "Enter your username:"
   read USERNAME
+  USERNAME=$(echo "$USERNAME" | xargs) 
+  [[ -n "$USERNAME" ]] && break         
+  echo "Username cannot be empty!"
 done
 # trim input
 USERNAME=$(echo $USERNAME | sed 's/ //g')
