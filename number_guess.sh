@@ -2,17 +2,10 @@
 
 PSQL="psql --username=freecodecamp --dbname=number_guess -t --no-align -c"
 
-while true
-do
-  echo -e "Enter your username:"
-  read USERNAME
-  if [[ "$USERNAME" =~ ^[a-zA-Z0-9]{3,22}$ ]]
-  then
-  break
-  else         
-  echo "Username cannot be empty!"
-  fi
-done
+
+echo "Enter your username:"
+read USERNAME
+
 # trim input
 USERNAME=$(echo $USERNAME | sed 's/ //g')
 
