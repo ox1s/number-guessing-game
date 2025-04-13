@@ -24,6 +24,8 @@ else
   #USERNAME=$($PSQL "SELECT name FROM users WHERE name='$USERNAME'")
   GAMES_PLAYED=$($PSQL "SELECT COUNT(*) FROM games WHERE user_id=$USER_ID")
   BEST_GAME=$($PSQL "SELECT MIN(number_of_guesses) FROM games WHERE user_id=$USER_ID")
+  GAMES_PLAYED=$(echo $GAMES_PLAYED | xargs)
+  BEST_GAME=$(echo $BEST_GAME | xargs)
   echo "Welcome back, $USERNAME! You have played $GAMES_PLAYED games, and your best game took $BEST_GAME guesses."
 fi
 
