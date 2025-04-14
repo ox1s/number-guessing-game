@@ -31,7 +31,7 @@ else
   BEST_GAME=0  
   fi
 
-  echo "Welcome back, $USERNAME! You have played $GAMES_PLAYED games, and your best game took $BEST_GAME guesses."
+  echo -e "\nWelcome back, $USERNAME! You have played $GAMES_PLAYED games, and your best game took $BEST_GAME guesses."
 fi
 
 RANDOM_NUMBER=$((1 + RANDOM % 1000))
