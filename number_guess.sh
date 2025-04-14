@@ -15,7 +15,7 @@ USER_ID=$($PSQL "SELECT user_id FROM users WHERE name='$USERNAME'")
 # if don't exist
 if [[ -z $USER_ID ]]
   then
-  echo -e "Welcome, $USERNAME! It looks like this is your first time here.\n"
+  echo -e "\nWelcome, $USERNAME! It looks like this is your first time here.\n"
   # add user
   INSERT=$($PSQL "INSERT INTO users(name) VALUES('$USERNAME')")
   # get new user_id
@@ -26,7 +26,7 @@ else
   BEST_GAME=$($PSQL "SELECT MIN(number_of_guesses) FROM games WHERE user_id=$USER_ID")
   GAMES_PLAYED=$(echo $GAMES_PLAYED | xargs)
   BEST_GAME=$(echo $BEST_GAME | xargs)
-  echo -e "Welcome back, $USERNAME! You have played $GAMES_PLAYED games, and your best game took $BEST_GAME guesses.\n"
+  echo -e "\nWelcome back, $USERNAME! You have played $GAMES_PLAYED games, and your best game took $BEST_GAME guesses.\n"
 fi
 
 RANDOM_NUMBER=$((1 + RANDOM % 1000))
