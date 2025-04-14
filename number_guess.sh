@@ -58,6 +58,7 @@ if echo "$GUESS" | grep -qE '^[0-9]+$'
   fi
 else
   echo "That is not an integer, guess again:"
+  ((TRIES++))
 fi
 done
 INSERT_GAME_RESULT=$($PSQL "INSERT INTO games(number_of_guesses,user_id) VALUES($TRIES, $USER_ID)")
