@@ -37,7 +37,7 @@ fi
 RANDOM_NUMBER=$((1 + RANDOM % 1000))
 TRIES=0
 
-echo -e "\nGuess the secret number between 1 and 1000:\n"
+echo "Guess the secret number between 1 and 1000:"
 
 # game loop
 while true 
@@ -52,13 +52,13 @@ if echo "$GUESS" | grep -qE '^[0-9]+$'
     break
   elif [[ $GUESS -lt $RANDOM_NUMBER ]]
     then
-    echo -e "\nIt's higher than that, guess again:\n"
+    echo "It's higher than that, guess again:"
   else 
-    echo -e "\nIt's lower than that, guess again:\n"
+    echo "It's lower than that, guess again:"
   fi
 else
-  echo -e "\nThat is not an integer, guess again:\n"
+  echo "That is not an integer, guess again:"
 fi
 done
 INSERT_GAME_RESULT=$($PSQL "INSERT INTO games(number_of_guesses,user_id) VALUES($TRIES, $USER_ID)")
-echo -e "\nYou guessed it in $TRIES tries. The secret number was $RANDOM_NUMBER. Nice job!"
+echo -e "You guessed it in $TRIES tries. The secret number was $RANDOM_NUMBER. Nice job!"
