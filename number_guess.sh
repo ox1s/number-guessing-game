@@ -3,7 +3,7 @@
 PSQL="psql --username=freecodecamp --dbname=number_guess -t --no-align -c"
 
 
-echo -e "\nEnter your username:"
+echo "Enter your username:"
 read USERNAME
 
 # trim input
@@ -15,7 +15,7 @@ USER_ID=$($PSQL "SELECT user_id FROM users WHERE name='$USERNAME'")
 # if don't exist
 if [[ -z $USER_ID ]]
   then
-  echo -e "\nWelcome, $USERNAME! It looks like this is your first time here."
+  echo "Welcome, $USERNAME! It looks like this is your first time here."
   # add user
   INSERT=$($PSQL "INSERT INTO users(name) VALUES('$USERNAME')")
   # get new user_id
@@ -31,7 +31,7 @@ else
   BEST_GAME=0  
   fi
 
-  echo -e "\nWelcome back, $USERNAME! You have played $GAMES_PLAYED games, and your best game took $BEST_GAME guesses."
+  echo "Welcome back, $USERNAME! You have played $GAMES_PLAYED games, and your best game took $BEST_GAME guesses."
 fi
 
 RANDOM_NUMBER=$((1 + RANDOM % 1000))
@@ -61,4 +61,4 @@ else
 fi
 done
 INSERT_GAME_RESULT=$($PSQL "INSERT INTO games(number_of_guesses,user_id) VALUES($TRIES, $USER_ID)")
-echo -e "You guessed it in $TRIES tries. The secret number was $RANDOM_NUMBER. Nice job!"
+echo "You guessed it in $TRIES tries. The secret number was $RANDOM_NUMBER. Nice job!"
