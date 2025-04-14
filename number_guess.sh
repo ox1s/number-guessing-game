@@ -26,6 +26,11 @@ else
   BEST_GAME=$($PSQL "SELECT MIN(number_of_guesses) FROM games WHERE user_id=$USER_ID")
   GAMES_PLAYED=$(echo $GAMES_PLAYED | xargs)
   BEST_GAME=$(echo $BEST_GAME | xargs)
+  if [[ -z "$BEST_GAME" ]] 
+  then
+  BEST_GAME=0  
+  fi
+
   echo "Welcome back, $USERNAME! You have played $GAMES_PLAYED games, and your best game took $BEST_GAME guesses."
 fi
 
